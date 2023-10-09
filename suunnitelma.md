@@ -1,2 +1,2 @@
 # Opiskelijakirpputori
-Sovelluksessa käyttäjät kauppaavat tavaroitaan toisilleen. Tuotteet vaihtavat omistajaa rahaa vastaan. Tässä prototyypissä on muutama valmis käyttäjä (kukin omine tavara- ja rahamäärineen) joiden avulla sovelluksen toiminnallisuutta voidaan tarkastella, eli uusia käyttäjätilejä ei pysty luomaan.
+Sovelluksessa käyttäjät kauppaavat tavaroitaan toisilleen. Tuotteet vaihtavat omistajaa rahaa vastaan. Tässä prototyypissä pystyy luomaan käyttäjätilejä ja lisäämään tavaroita myyntiin. Aluksi kullakin käyttäjällä on X määrä rahaa, jota kuluttaa tavaroiden ostamiseen. Tiedot tavaraliikenteestä sekä käyttäjistä tallennetaan ulkoiseen tietovarastoon.
