@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const itemList = document.getElementById("item-list");
+    const itemName = document.getElementById("item-name");
     const addItemButton = document.getElementById("add-item");
 
     const items = [
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .then(response => response.json())
           .then(items => {
             console.log('Received items from server:', items);
-            itemList.innerHTML = '';
+            itemName.innerHTML = '';
             items.items.forEach(item => {
               const li = document.createElement("li");
               li.textContent = `${item.name} - $${item.price} - ${item.user}`;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
               removeButton.addEventListener("click", () => removeItem(item.id));
       
               li.appendChild(removeButton);
-              itemList.appendChild(li);
+              itemName.appendChild(li);
             });
           })
           .catch(error => console.error(error));
@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
             displayItems();
         }
     }
-
-    addItemButton.addEventListener("click", function () {
+/*
+      addItemButton.addEventListener("click", function () {
         items.push({
             "id": items.length + 1,
             "name": "New Item",
@@ -55,6 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         displayItems();
     });
-
+*/
     displayItems();
 });

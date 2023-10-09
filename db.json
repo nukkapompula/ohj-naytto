@@ -18,5 +18,11 @@
             "price": 10,
             "user": "Peter Smith"
         }
+    ],
+    "users": [
+        {
+            "name": "admin",
+            "password": "admin"
+        }
     ]
   }
