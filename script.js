@@ -18,19 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     function displayItems() {
-        itemList.innerHTML = '';
-        items.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.name} - $${item.price} - ${item.user}`;
-            
-            const removeButton = document.createElement("button");
-            removeButton.textContent = "Remove";
-            removeButton.addEventListener("click", () => removeItem(item.id));
-
-            li.appendChild(removeButton);
-            itemList.appendChild(li);
-        });
-    }
+        console.log('Fetching items from server...');
+        fetch('http://localhost:3000/api/items')
+          .then(response => response.json())
+          .then(items => {
+            console.log('Received items from server:', items);
+            itemList.innerHTML = '';
+            items.items.forEach(item => {
+              const li = document.createElement("li");
+              li.textContent = `${item.name} - $${item.price} - ${item.user}`;
+      
+              const removeButton = document.createElement("button");
+              removeButton.textContent = "Remove";
+              removeButton.addEventListener("click", () => removeItem(item.id));
+      
+              li.appendChild(removeButton);
+              itemList.appendChild(li);
+            });
+          })
+          .catch(error => console.error(error));
+      }
 
     function removeItem(itemId) {
         const indexToRemove = items.findIndex(item => item.id === itemId);

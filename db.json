@@ -1,0 +1,22 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "desk",
+            "price": 100,
+            "user": "John Doe"
+        },
+        {
+            "id": 2,
+            "name": "chair",
+            "price": 60,
+            "user": "Peter Smith"
+        },
+        {
+            "id": 3,
+            "name": "lamp",
+            "price": 10,
+            "user": "Peter Smith"
+        }
+    ]
+  }
