@@ -8,11 +8,24 @@
 </head>
 <body>
     <h1>Opiskelijakirpputori</h1>
-    <p>Käyttäjänimi: <input type="text" id="loginUsername"></p>
-    <p>Salasana: <input type="password" id="loginPassword"></p>
 
-    <p>Ei tiliä? Luo sellainen itsellesi!</p>
-    <button id="createNewAccount">Tee uusi käyttäjätili</button>
+    <div id="loginWindow">
+        <p>Käyttäjänimi: <input type="text" id="loginUsername"></p>
+        <p>Salasana: <input type="password" id="loginPassword"></p>
+        <br>
+        <p>Ei tiliä? Luo sellainen itsellesi!</p>
+        <button id="createNewAccount">Tee uusi käyttäjätili</button>
+    </div>
+    
+    <div id="signupWindow">
+        <p>
+            Täydennä kentät pyydetyillä tiedoilla. Tili luodaan, jos niissä ei ole ongelmia!
+        </p>
+        <p>Käyttäjänimi: <input type="text" id="signupUsername"></p>
+        <p>Salasana: <input type="password" id="signupPassword"></p>
+        <button id="confirmNewAccount">Vahvista</button>
+        <button id="returnToLogin">Peruuta</button>
+    </div>
 
     <script src="login.js"></script>
 </body>
