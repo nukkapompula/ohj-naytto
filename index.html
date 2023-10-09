@@ -10,8 +10,9 @@
     <h1>Opiskelijakirpputori</h1>
 
     <div id="loginWindow">
-        <p>Käyttäjänimi: <input type="text" id="loginUsername"></p>
-        <p>Salasana: <input type="password" id="loginPassword"></p>
+        <p>Käyttäjänimi: <input type="text" id="loginUsername" size="20" maxlength="20"></p>
+        <p>Salasana: <input type="password" id="loginPassword" size="20" maxlength="20"></p>
+        <button id="loginUser">Kirjaudu sisään</button>
         <br>
         <p>Ei tiliä? Luo sellainen itsellesi!</p>
         <button id="createNewAccount">Tee uusi käyttäjätili</button>
@@ -19,10 +20,10 @@
     
     <div id="signupWindow">
         <p>
-            Täydennä kentät pyydetyillä tiedoilla. Tili luodaan, jos niissä ei ole ongelmia!
+            Täydennä allaolevat kentät. Tili luodaan, jos tiedoissa ei ole ongelmia!
         </p>
-        <p>Käyttäjänimi: <input type="text" id="signupUsername"></p>
-        <p>Salasana: <input type="password" id="signupPassword"></p>
+        <p>Käyttäjänimesi: <input type="text" id="signupUsername" size="20" maxlength="20"></p>
+        <p>Salasanasi: <input type="password" id="signupPassword" size="20" maxlength="20"></p>
         <button id="confirmNewAccount">Vahvista</button>
         <button id="returnToLogin">Peruuta</button>
     </div>
