@@ -1,28 +1,16 @@
 {
-    "items": [
-        {
-            "id": 1,
-            "name": "desk",
-            "price": 100,
-            "user": "John Doe"
-        },
-        {
-            "id": 2,
-            "name": "chair",
-            "price": 60,
-            "user": "Peter Smith"
-        },
-        {
-            "id": 3,
-            "name": "lamp",
-            "price": 10,
-            "user": "Peter Smith"
-        }
-    ],
-    "users": [
-        {
-            "name": "admin",
-            "password": "admin"
-        }
-    ]
-  }
+  "items": [
+    {
+      "name": "Pöytä",
+      "price": "50",
+      "user": "Testi Testaaja",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "name": "admin",
+      "password": "admin"
+    }
+  ]
+}
