@@ -8,6 +8,21 @@ var signupPassword = document.getElementById("signupPassword");
 document.getElementById("loginUser").addEventListener("mousedown", function(){
     if(loginUsername.value == "" || loginPassword.value == ""){
         window.alert("Ole hyvä ja täytä molemmat kentät.");
+    } else {
+        fetch('http://localhost:3000/api/items')
+            .then(response => response.json())
+            .then(items => {
+                items.users.forEach(item => {
+                    if(loginUsername.value == item.name && loginPassword.value == item.password){
+                        console.log(`${item.name} logged in!`)
+                        return
+                    } else {
+                        window.alert("Käyttäjää ei löydy tai salasana on väärä.");
+                        loginUsername.value = "";
+                        loginPassword.value = "";
+                    }
+            })
+        });
     }
 })
 
