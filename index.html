@@ -12,10 +12,10 @@
     <div id="loginWindow">
         <p>Käyttäjänimi: <input type="text" id="loginUsername" size="20" maxlength="20"></p>
         <p>Salasana: <input type="password" id="loginPassword" size="20" maxlength="20"></p>
-        <button id="loginUser">Kirjaudu sisään</button>
+        <button onmousedown="loginUser()">Kirjaudu sisään</button>
         <br>
         <p>Ei tiliä? Luo sellainen itsellesi!</p>
-        <button id="createNewAccount">Tee uusi käyttäjätili</button>
+        <button onmousedown="createNewAccount()">Tee uusi käyttäjätili</button>
     </div>
     
     <div id="signupWindow">
@@ -24,8 +24,8 @@
         </p>
         <p>Käyttäjänimesi: <input type="text" id="signupUsername" size="20" maxlength="20"></p>
         <p>Salasanasi: <input type="password" id="signupPassword" size="20" maxlength="20"></p>
-        <button id="confirmNewAccount">Vahvista</button>
-        <button id="returnToLogin">Peruuta</button>
+        <button onmousedown="confirmNewAccount()">Vahvista</button>
+        <button onmousedown="returnToLogin()">Peruuta</button>
     </div>
 
     <script src="login.js"></script>
