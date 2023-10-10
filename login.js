@@ -12,9 +12,9 @@ document.getElementById("loginUser").addEventListener("mousedown", function(){
         fetch('http://localhost:3000/api/items')
             .then(response => response.json())
             .then(items => {
-                items.users.forEach(item => {
-                    if(loginUsername.value == item.name && loginPassword.value == item.password){
-                        console.log(`${item.name} logged in!`)
+                items.users.forEach(user => {
+                    if(loginUsername.value == user.name && loginPassword.value == user.password){
+                        console.log(`${user.name} logged in!`)
                         loginUsername.value = "";
                         loginPassword.value = "";
                         window.location = "market.html";
