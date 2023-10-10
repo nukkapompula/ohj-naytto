@@ -15,14 +15,13 @@ document.getElementById("loginUser").addEventListener("mousedown", function(){
                 items.users.forEach(item => {
                     if(loginUsername.value == item.name && loginPassword.value == item.password){
                         console.log(`${item.name} logged in!`)
-                        return
-                    } else {
-                        window.alert("Käyttäjää ei löydy tai salasana on väärä.");
                         loginUsername.value = "";
                         loginPassword.value = "";
+                        window.location = "market.html";
+                        return
                     }
-            })
-        });
+                })
+            });
     }
 })
 
