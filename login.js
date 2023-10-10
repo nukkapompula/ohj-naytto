@@ -6,6 +6,7 @@ var signupUsername = document.getElementById("signupUsername");
 var signupPassword = document.getElementById("signupPassword");
 
 document.getElementById("loginUser").addEventListener("mousedown", function(){
+    let match = 0;
     if(loginUsername.value == "" || loginPassword.value == ""){
         window.alert("Ole hyvä ja täytä molemmat kentät.");
     } else {
@@ -14,14 +15,20 @@ document.getElementById("loginUser").addEventListener("mousedown", function(){
             .then(items => {
                 items.users.forEach(user => {
                     if(loginUsername.value == user.name && loginPassword.value == user.password){
-                        console.log(`${user.name} logged in!`)
-                        loginUsername.value = "";
-                        loginPassword.value = "";
-                        window.location = "market.html";
-                        return
+                        match += 1;
+                        return;
                     }
                 })
-            });
+                if(match == 1){
+                    loginUsername.value = "";
+                    loginPassword.value = "";
+                    window.location = "market.html";
+                } else {
+                    window.alert("Käyttäjää ei löydy tai salasana on väärä.");
+                    loginUsername.value = "";
+                    loginPassword.value = "";
+                }
+            })
     }
 })
 
