@@ -20,6 +20,18 @@ app.get('/api/items', (req, res) => {
   });
 });
 
+app.get('/api/users', (req, res) => {
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const users = JSON.parse(data);
+    res.json(users);
+  });
+});
+
 app.post('/api/items', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -42,6 +54,29 @@ app.post('/api/items', (req, res) => {
     });
   });
 });
+
+app.post('/api/users', (req, res) => {
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const users = JSON.parse(data);
+    const newUser = req.body;
+    newUser.id = users.users.length + 1;
+    users.users.push(newUser);
+    fs.writeFile('db.json', JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.status(201).json(newUser);
+    });
+  });
+});
+
 
 app.get('/api/items/:id', (req, res) => {
     const id = req.params.id;

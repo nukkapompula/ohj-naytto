@@ -5,12 +5,24 @@
       "price": "50",
       "user": "Testi Testaaja",
       "id": 1
+    },
+    {
+      "name": "tuoli",
+      "price": "80",
+      "user": "ilmo",
+      "id": 2
     }
   ],
   "users": [
     {
       "name": "admin",
       "password": "admin"
+    },
+    {
+      "name": "ilmo",
+      "password": "ilmo",
+      "money": 300,
+      "id": 2
     }
   ]
 }

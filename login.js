@@ -70,6 +70,17 @@ function confirmNewAccount(){
             } else {
                 confirmationWindow.style.display = "block";
                 signupWindow.style.display = "none";
+                fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: signupUsername.value,
+                        password: signupPassword.value,
+                        money: 300
+                    })
+                })
                 accountAddedText.innerHTML = `Käyttäjä ${signupUsername.value} luotu!`;
                 signupUsername.value = "";
                 signupPassword.value = "";
