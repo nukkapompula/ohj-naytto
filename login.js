@@ -5,7 +5,6 @@ var signupWindow = document.getElementsByTagName("div")[1];
 var signupUsername = document.getElementById("signupUsername");
 var signupPassword = document.getElementById("signupPassword");
 var confirmationWindow = document.getElementsByTagName("div")[2];
-var accountAddedText = document.getElementById("accountAddedText");
 
 function loginUser(){
     let matchFound = false;
@@ -81,7 +80,6 @@ function confirmNewAccount(){
                         money: 300
                     })
                 })
-                accountAddedText.innerHTML = `Käyttäjä ${signupUsername.value} luotu!`;
                 signupUsername.value = "";
                 signupPassword.value = "";
             }

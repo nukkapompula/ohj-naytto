@@ -23,6 +23,12 @@
       "password": "ilmo",
       "money": 300,
       "id": 2
+    },
+    {
+      "name": "Artsi",
+      "password": "artsi",
+      "money": 300,
+      "id": 3
     }
   ]
 }
