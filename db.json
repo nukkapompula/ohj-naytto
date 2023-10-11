@@ -29,6 +29,12 @@
       "password": "artsi",
       "money": 300,
       "id": 3
+    },
+    {
+      "name": "ville",
+      "password": "ville",
+      "money": 300,
+      "id": 4
     }
   ]
 }
