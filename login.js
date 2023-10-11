@@ -78,7 +78,8 @@ function confirmNewAccount(){
                     body: JSON.stringify({
                         name: signupUsername.value,
                         password: signupPassword.value,
-                        money: 300
+                        money: 300,
+                        history: []
                     })
                 })
                 signupUsername.value = "";

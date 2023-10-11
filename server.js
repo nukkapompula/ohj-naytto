@@ -41,7 +41,6 @@ app.post('/api/items', (req, res) => {
     }
     const items = JSON.parse(data);
     const newItem = req.body;
-    console.log('body ', req.body);
     newItem.id = items.items.length + 1;
     items.items.push(newItem);
     fs.writeFile('db.json', JSON.stringify(items, null, 2), (err) => {
@@ -55,6 +54,24 @@ app.post('/api/items', (req, res) => {
   });
 });
 
+app.get('/api/users/:name', (req, res) => {
+  const name = req.params.name;
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const users = JSON.parse(data).users;
+    const user = users.find(u => u.name === name);
+    if (!user) {
+      res.status(404).send('User not found');
+      return;
+    }
+    res.json(user);
+  });
+});
+
 app.post('/api/users', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -62,11 +79,11 @@ app.post('/api/users', (req, res) => {
       res.status(500).send('Server error');
       return;
     }
-    const users = JSON.parse(data);
+    const users = JSON.parse(data).users;
     const newUser = req.body;
-    newUser.id = users.users.length + 1;
-    users.users.push(newUser);
-    fs.writeFile('db.json', JSON.stringify(users, null, 2), (err) => {
+    newUser.id = users.length + 1;
+    users.push(newUser);
+    fs.writeFile('db.json', JSON.stringify({ items: [], users }, null, 2), (err) => {
       if (err) {
         console.error(err);
         res.status(500).send('Server error');
@@ -77,10 +94,36 @@ app.post('/api/users', (req, res) => {
   });
 });
 
+app.post('/api/users/:name/history', (req, res) => {
+  const name = req.params.name;
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const db = JSON.parse(data);
+    const user = db.users.find(u => u.name === name);
+    if (!user) {
+      res.status(404).send('User not found');
+      return;
+    }
+    const newItem = req.body;
+    newItem.id = user.history.length + 1;
+    user.history.push(newItem);
+    fs.writeFile('db.json', JSON.stringify(db, null, 2), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.status(201).json(newItem);
+    });
+  });
+});
 
 app.get('/api/items/:id', (req, res) => {
     const id = req.params.id;
-    console.log(`Fetching item with id ${id}...`);
 
     fs.readFile('db.json', 'utf8', (err, data) => {
       if (err) {
@@ -100,7 +143,6 @@ app.get('/api/items/:id', (req, res) => {
 
 app.delete('/api/items/:id', (req, res) => {
   const id = req.params.id;
-  console.log(`Deleting item with id ${id}...`);
 
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -122,7 +164,6 @@ app.delete('/api/items/:id', (req, res) => {
         return;
       }
       res.json(item);
-      console.log(`Deleted item with id ${id}`);
     });
   });
 });
@@ -145,7 +186,6 @@ app.post('/api/items', (req, res) => {
         return;
       }
       res.status(201).json(newItem);
-      console.log(`Added new item: ${newItem}`);
     });
   });
 });
