@@ -11,6 +11,18 @@
       "price": "20",
       "user": "ilmo",
       "id": 2
+    },
+    {
+      "name": "tietokone",
+      "price": "100",
+      "user": "ilmo",
+      "id": 3
+    },
+    {
+      "name": "muki",
+      "price": "10",
+      "user": "elmo",
+      "id": 4
     }
   ],
   "users": [

@@ -29,7 +29,6 @@ function checkInput(event){
                 name: nameitem,
                 price: nameprice,
                 user: userName,
-                users: ["selling"]
             })
         })
         console.log("Toimii")
