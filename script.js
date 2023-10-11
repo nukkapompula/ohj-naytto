@@ -14,16 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
               console.log('Received items from server:', items);
               itemName.innerHTML = '';
               items.items.forEach(item => {
-              
-              const li = document.createElement("li");
-              li.textContent = `${item.name} - €${item.price} - ${item.user} `;
-      
-              const removeButton = document.createElement("button");
-              removeButton.textContent = "Osta";
-              removeButton.addEventListener("click", () => removeItem(item.id));
-              
-              li.appendChild(removeButton);
-              itemName.appendChild(li);
+              if(item.user != localStorage.getItem("loggedIn")){
+                  const li = document.createElement("li");
+                  li.textContent = `${item.name} - €${item.price} - ${item.user} `;
+        
+                  const removeButton = document.createElement("button");
+                  removeButton.textContent = "Osta";
+                  removeButton.addEventListener("click", () => removeItem(item.id));
+                
+                  li.appendChild(removeButton);
+                  itemName.appendChild(li);
+              }
           });
         })
         .catch(error => console.error(error));
