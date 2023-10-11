@@ -3,7 +3,7 @@ function checkInput(event){
 
     let nameitem = document.getElementById("inputname").value;
     let nameprice = document.getElementById("inputprice").value;
-    let user = document.getElementById("inputuser").value;
+    let userName = document.getElementById("inputuser").value;
 
     if(nameitem == ""){
         alert("Syötä tuotteen nimi!");
@@ -13,7 +13,7 @@ function checkInput(event){
         alert("Syötä tuotteen hinta!");
         return;
     }
-    if(user == ""){
+    if(userName == ""){
         alert("Syötä käyttäjä!");
         return;
     } 
@@ -26,7 +26,8 @@ function checkInput(event){
             body: JSON.stringify({
                 name: nameitem,
                 price: nameprice,
-                user: user
+                user: userName,
+                users: ["selling"]
             })
         })
         console.log("Toimii")

@@ -7,16 +7,10 @@
       "id": 1
     },
     {
-      "name": "tuoli",
-      "price": "80",
+      "name": "pöytä",
+      "price": "20",
       "user": "ilmo",
       "id": 2
-    },
-    {
-      "name": "Muki",
-      "price": "10",
-      "user": "John Doe",
-      "id": 3
     }
   ],
   "users": [
