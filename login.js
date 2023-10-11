@@ -21,6 +21,7 @@ function loginUser(){
                 }
             })
             if(matchFound == true){
+                localStorage.setItem("loggedIn", loginUsername.value);
                 loginUsername.value = "";
                 loginPassword.value = "";
                 window.location = "market.html";

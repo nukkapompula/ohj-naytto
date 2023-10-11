@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
 
+    document.getElementById("userInfo").innerHTML = `${localStorage.getItem("loggedIn")} kirjattu sisään.`;
+
     function displayItems() {
         console.log('Fetching items from server...');
         fetch('http://localhost:3000/api/items')
