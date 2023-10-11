@@ -11,6 +11,12 @@
       "price": "80",
       "user": "ilmo",
       "id": 2
+    },
+    {
+      "name": "Muki",
+      "price": "10",
+      "user": "John Doe",
+      "id": 3
     }
   ],
   "users": [

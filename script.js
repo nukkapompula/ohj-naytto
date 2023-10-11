@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
+    
 
     function displayItems() {
         console.log('Fetching items from server...');
