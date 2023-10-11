@@ -7,11 +7,13 @@ Sovelluksessa käyttäjät kauppaavat tavaroitaan toisilleen. Tässä prototyypi
 - Ville luo markettisivun
 ---
 ### *Muistiinpanoja ja muita huomioita toiminnallisuudesta*
-Kirjauduttuaan sisään käyttäjä näkee myytävästä tavarasta seuraavat tiedot:
+Kirjautuneen käyttäjän ID tallennetaan tiedostoon "user.js".
+
+Sisäänkirjautumisen jälkeen kaikilla selattavilla sivuilla on tieto kirjautuneen nimestä ja rahamäärästä. Käyttäjä näkee markettisivulla myytävästä tavarasta seuraavat tiedot:
 - esineen nimi
 - hinta
 - myyjän nimi.
 
-Sisäänkirjautuneen ID on saatava talteen, jotta mm. kirjautuneen nimi näkyy markettisivuilla sekä tuotetta lisättäessä myyjä voidaan lisätä kohteeseen. Lisäksi "Omat tuotteet"-sivu näyttää tällöin vain kirjautuneen käyttäjän ostamat/lisäämät tavarat.
+"Oma historia"-sivu näyttää käyttäjän ostamia tuotteita.
 
-Mitä tietoa "Oma historia"-sivulla esitellään?
+"Omat tuotteet"-sivu näyttää käyttäjän lisäämät myyntiin asetetut tuotteet.
