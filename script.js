@@ -1,8 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
     
+    const userName = localStorage.getItem("loggedIn");
 
-    const userName = document.getElementById("userInfo").innerHTML = `${localStorage.getItem("loggedIn")} kirjattu sisään.`;
+    function displayInfo(){
+        fetch('http://localhost:3000/api/items')
+        .then(response => response.json())
+        .then(items => {
+            items.users.forEach(user => {
+                if(user.name == userName){
+                    document.getElementById("userInfo").innerHTML = 
+                    `${localStorage.getItem("loggedIn")} kirjattu sisään, rahaa ${user.money}€.`;
+                }
+            })
+        })
+    }
 
     console.log(userName);
 
@@ -78,4 +90,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     displayItems();
+    displayInfo();
 });
