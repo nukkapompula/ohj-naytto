@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 items.users.forEach(user => {
                     if (user.name == userName) {
                         document.getElementById("userInfo").innerHTML =
-                            `${userName} kirjattu sisään, rahaa ${user.money}€.`;
+                        `${userName} kirjattu sisään, rahaa ${user.money}€.`;
+                        localStorage.setItem("userMoney", user.money);
                     }
                 })
             })
@@ -30,10 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         const buyButton = document.createElement("button");
                         buyButton.textContent = "Osta";
                         buyButton.addEventListener("click", () => {
-                            const userMoney = getUserMoney();
-                            console.log("rahat:", userMoney);
+                            console.log("rahat:", localStorage.getItem("userMoney"));
                             console.log("hinta:", item.price);
-                            if (userMoney >= item.price) {
+                            if (Number(localStorage.getItem("userMoney")) >= item.price) {
                                 removeItem(item.id);
                             } else {
                                 window.alert("Rahamäärä ei riitä.");
@@ -76,11 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => console.error(error));
-    }
-
-    function getUserMoney() {
-        return parseFloat(localStorage.getItem("userMoney")) || 0;
-
     }
 
     function removeItem(itemId) {
