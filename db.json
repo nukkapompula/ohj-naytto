@@ -1,12 +1,6 @@
 {
   "items": [
     {
-      "name": "Pöytä",
-      "price": "50",
-      "user": "ilmo",
-      "id": 1
-    },
-    {
       "name": "tietokone",
       "price": "100",
       "user": "testi henkilö",
@@ -79,6 +73,12 @@
           "price": "20",
           "user": "elmo",
           "id": 1
+        },
+        {
+          "name": "Pöytä",
+          "price": "50",
+          "user": "ilmo",
+          "id": 2
         }
       ]
     },
