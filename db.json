@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "name": "tietokone",
-      "price": "100",
-      "user": "testi henkilö",
-      "id": 3
-    },
-    {
-      "name": "näyttö",
-      "price": "40",
-      "user": "testi henkilö2",
-      "id": 4
-    },
-    {
       "name": "Avaruusrumilus",
       "price": "666",
       "user": "Artsi",
@@ -29,6 +17,12 @@
       "price": "5",
       "user": "ilmo",
       "id": 6
+    },
+    {
+      "name": "puhelin",
+      "price": "80",
+      "user": "ilmo",
+      "id": 5
     }
   ],
   "users": [
@@ -39,7 +33,7 @@
     {
       "name": "ilmo",
       "password": "ilmo",
-      "money": 300,
+      "money": 160,
       "id": 2,
       "history": [
         {
@@ -59,6 +53,18 @@
           "price": "10",
           "user": "Testi henkilö5",
           "id": 3
+        },
+        {
+          "name": "tietokone",
+          "price": "100",
+          "user": "testi henkilö",
+          "id": 4
+        },
+        {
+          "name": "näyttö",
+          "price": "40",
+          "user": "testi henkilö2",
+          "id": 5
         }
       ]
     },

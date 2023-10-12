@@ -1,6 +1,10 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
     const userName = localStorage.getItem("loggedIn");
+    const storageMoney = localStorage.getItem("userMoney");
+    let moneyLeft = storageMoney;
 
     function displayInfo() {
         fetch('http://localhost:3000/api/items')
@@ -16,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
     }
 
+    console.log(moneyLeft);
     console.log(userName);
 
     function displayItems() {
@@ -27,19 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (item.user != localStorage.getItem("loggedIn")) {
                         const li = document.createElement("li");
                         li.textContent = `${item.name} - €${item.price} - ${item.user} `;
-
+    
                         const buyButton = document.createElement("button");
                         buyButton.textContent = "Osta";
                         buyButton.addEventListener("click", () => {
                             console.log("rahat:", localStorage.getItem("userMoney"));
                             console.log("hinta:", item.price);
                             if (Number(localStorage.getItem("userMoney")) >= item.price) {
+                                moneyLeft -= item.price;
+                                localStorage.setItem("userMoney", moneyLeft);
                                 removeItem(item.id);
                             } else {
                                 window.alert("Rahamäärä ei riitä.");
                             }
                         });
-
+    
                         li.appendChild(buyButton);
                         itemName.appendChild(li);
                     }
@@ -78,7 +85,30 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
+    function updateMoney() {
+
+        const userMoney = moneyLeft;
+        const userName = localStorage.getItem("loggedIn");
+        console.log("userMoney:", userMoney);
+    
+        fetch(`http://localhost:3000/api/users/${userName}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ money: userMoney })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update user money');
+            }
+            console.log('User money updated successfully');
+        })
+        .catch(error => console.error(error));
+    }
+
     function removeItem(itemId) {
+        updateMoney();
         fetch(`http://localhost:3000/api/items/${itemId}`, {
             method: 'DELETE'
         })

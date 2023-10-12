@@ -20,6 +20,7 @@ app.get('/api/items', (req, res) => {
   });
 });
 
+
 app.get('/api/users', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -28,6 +29,7 @@ app.get('/api/users', (req, res) => {
       return;
     }
     const users = JSON.parse(data);
+    console.log(data)
     res.json(users);
   });
 });
@@ -71,6 +73,28 @@ app.get('/api/users/:name', (req, res) => {
     res.json(user);
   });
 });
+
+
+
+app.get('/api/users/:name/money', (req, res) => {
+  const name = req.params.name;
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const users = JSON.parse(data).users;
+    const user = users.find(u => u.name === name);
+    if (!user) {
+      res.status(404).send('User not found');
+      return;
+    }
+    res.json(user.money);
+  });
+});
+
+
 
 app.post('/api/users', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
@@ -188,6 +212,28 @@ app.post('/api/items', (req, res) => {
       res.status(201).json(newItem);
     });
   });
+});
+
+app.put('/api/users/:userName', (req, res) => {
+  const userName = req.params.userName;
+  const userMoney = req.body.money;
+  console.log("userMoney:", userMoney);
+  try {
+    const data = fs.readFileSync('db.json', 'utf8');
+    const db = JSON.parse(data);
+    const users = db.users;
+    const user = users.find(u => u.name === userName);
+    if (!user) {
+      res.status(404).send('User not found');
+      return;
+    }
+    user.money = userMoney;
+    fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
+    res.send('User money updated successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
 });
 
 app.listen(port, () => {
