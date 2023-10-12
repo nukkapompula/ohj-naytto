@@ -1,0 +1,8 @@
+*{
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+.container{
+    max-width: 1080px;
+}
+
