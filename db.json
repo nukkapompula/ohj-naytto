@@ -7,12 +7,6 @@
       "id": 1
     },
     {
-      "name": "tuoli",
-      "price": "20",
-      "user": "elmo",
-      "id": 2
-    },
-    {
       "name": "tietokone",
       "price": "100",
       "user": "testi henkilö",
@@ -67,7 +61,14 @@
       "password": "artsi",
       "money": 300,
       "id": 3,
-      "history": []
+      "history": [
+        {
+          "name": "tuoli",
+          "price": "20",
+          "user": "elmo",
+          "id": 1
+        }
+      ]
     },
     {
       "name": "ville",

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             items.users.forEach(user => {
                 if(user.name == userName){
                     document.getElementById("userInfo").innerHTML = 
-                    `${localStorage.getItem("loggedIn")} kirjattu sisään, rahaa ${user.money}€.`;
+                    `${userName} kirjattu sisään, rahaa ${user.money}€.`;
                 }
             })
         })

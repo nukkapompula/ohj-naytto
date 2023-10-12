@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
-    
     const userName = localStorage.getItem("loggedIn");
 
     function displayInfo(){
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             items.users.forEach(user => {
                 if(user.name == userName){
                     document.getElementById("userInfo").innerHTML = 
-                    `${localStorage.getItem("loggedIn")} kirjattu sisään, rahaa ${user.money}€.`;
+                    `${userName} kirjattu sisään, rahaa ${user.money}€.`;
                 }
             })
         })
@@ -41,9 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     
       function addUserHistory(item) {
-        const loggedInUser = localStorage.getItem("loggedIn");
-    
-       
+
         if (!item) {
             console.error('No item provided to addUserHistory');
             return;
@@ -56,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             user: item.user
         };
     
-        fetch(`http://localhost:3000/api/users/${loggedInUser}/history`, {
+        fetch(`http://localhost:3000/api/users/${userName}/history`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
