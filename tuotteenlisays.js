@@ -39,6 +39,5 @@ function checkInput(event){
                 user: userName,
             })
         })
-        console.log("Toimii")
     }
 }
