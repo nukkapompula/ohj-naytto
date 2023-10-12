@@ -23,6 +23,12 @@
       "price": "40",
       "user": "testi henkilö2",
       "id": 4
+    },
+    {
+      "name": "Avaruusrumilus",
+      "price": "666",
+      "user": "Artsi",
+      "id": 5
     }
   ],
   "users": [
