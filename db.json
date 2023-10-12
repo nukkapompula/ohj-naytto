@@ -23,6 +23,18 @@
       "price": "666",
       "user": "Artsi",
       "id": 5
+    },
+    {
+      "name": "Lamppu",
+      "price": "10",
+      "user": "ilmo",
+      "id": 5
+    },
+    {
+      "name": "Kirja",
+      "price": "5",
+      "user": "ilmo",
+      "id": 6
     }
   ],
   "users": [
@@ -88,8 +100,7 @@
           "user": "ilmo",
           "id": 1
         }
-      ],
-      "id": 5
+      ]
     }
   ]
 }
