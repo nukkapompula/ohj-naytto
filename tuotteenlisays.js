@@ -1,4 +1,5 @@
 const userName = localStorage.getItem("loggedIn");
+const numberTest = /^\d+$/;
 
 /*Näytetään käyttäjän tiedot*/
 function displayInfo(){
@@ -29,6 +30,11 @@ function checkInput(event){
         alert("Syötä tuotteen hinta!");
         return;
     }
+    if(!numberTest.test(nameprice)){
+        alert("Hinnan täytyy olla numero!")
+        return;
+    }
+    
     else {
         fetch('http://localhost:3000/api/items', {
             method: 'POST',
