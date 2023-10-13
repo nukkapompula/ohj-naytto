@@ -1,5 +1,6 @@
 const userName = localStorage.getItem("loggedIn");
 
+/*Näytetään käyttäjän tiedot*/
 function displayInfo(){
     fetch('http://localhost:3000/api/items')
     .then(response => response.json())
@@ -13,6 +14,7 @@ function displayInfo(){
     })
 }
 
+/*Lisätään tuote*/
 function checkInput(event){
     event.preventDefault();
 

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userHistory = document.getElementById("user-history");
     const userName = localStorage.getItem("loggedIn");
 
+    /*Näytetään käyttäjän tiedot*/
     function displayInfo(){
         fetch('http://localhost:3000/api/items')
         .then(response => response.json())
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    /*Näytetään tuotteet*/
     function displayHistory() {
         fetch('http://localhost:3000/api/items')
             .then(response => response.json())

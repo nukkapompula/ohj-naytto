@@ -1,11 +1,10 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
     const userName = localStorage.getItem("loggedIn");
     const storageMoney = localStorage.getItem("userMoney");
     let moneyLeft = storageMoney;
 
+    /*Näytetään käyttäjän tiedot*/
     function displayInfo() {
         fetch('http://localhost:3000/api/items')
             .then(response => response.json())
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(moneyLeft);
     console.log(userName);
 
+    /*Näytetään tuotteet*/
     function displayItems() {
         fetch('http://localhost:3000/api/items')
             .then(response => response.json())
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
-
+    /*Lisätään tuote historiaan*/
     function addUserHistory(item) {
 
         if (!item) {
@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
+    /*Päivitetään käyttäjän rahat*/
     function updateMoney() {
 
         const userMoney = moneyLeft;
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error(error));
     }
 
+    /*Poistetaan tuote*/
     function removeItem(itemId) {
         updateMoney();
         fetch(`http://localhost:3000/api/items/${itemId}`, {

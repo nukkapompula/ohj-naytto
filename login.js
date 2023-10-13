@@ -6,6 +6,7 @@ var signupUsername = document.getElementById("signupUsername");
 var signupPassword = document.getElementById("signupPassword");
 var confirmationWindow = document.getElementsByTagName("div")[2];
 
+/*Näytetään kirjautumisikkuna*/
 function loginUser(){
     let matchFound = false;
     if(loginUsername.value == "" || loginPassword.value == ""){
@@ -34,6 +35,7 @@ function loginUser(){
     }
 }
 
+/* Uuden käyttäjän luonti */
 function createNewAccount(){
     loginWindow.style.display = "none";
     loginUsername.value = "";
@@ -41,6 +43,7 @@ function createNewAccount(){
     signupWindow.style.display = "block";
 }
 
+/* Palataan kirjautumisikkunaan */
 function returnToLogin(){
     signupWindow.style.display = "none";
     confirmationWindow.style.display = "none";
@@ -49,6 +52,7 @@ function returnToLogin(){
     loginWindow.style.display = "block";
 }
 
+/* Vahvistetaan uuden käyttäjän luonti */
 function confirmNewAccount(){
     let matchFound = false;
     if(signupUsername.value == "" || signupPassword.value == ""){
