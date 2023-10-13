@@ -8,6 +8,8 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(cors());
 
+
+/*Haetaan tuotteet */
 app.get('/api/items', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -21,6 +23,7 @@ app.get('/api/items', (req, res) => {
 });
 
 
+/*Haetaan käyttäjät */
 app.get('/api/users', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -34,6 +37,8 @@ app.get('/api/users', (req, res) => {
   });
 });
 
+
+/*Lisätään tuote */
 app.post('/api/items', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -56,6 +61,7 @@ app.post('/api/items', (req, res) => {
   });
 });
 
+/*Haetaan käyttäjä nimellä */
 app.get('/api/users/:name', (req, res) => {
   const name = req.params.name;
   fs.readFile('db.json', 'utf8', (err, data) => {
@@ -74,8 +80,7 @@ app.get('/api/users/:name', (req, res) => {
   });
 });
 
-
-
+/*Haetaan käyttäjän rahat */
 app.get('/api/users/:name/money', (req, res) => {
   const name = req.params.name;
   fs.readFile('db.json', 'utf8', (err, data) => {
@@ -94,8 +99,7 @@ app.get('/api/users/:name/money', (req, res) => {
   });
 });
 
-
-
+/* Lisätään käyttäjä */
 app.post('/api/users', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -118,6 +122,8 @@ app.post('/api/users', (req, res) => {
   });
 });
 
+
+/* Lisätään käyttäjän historiaan tuote */
 app.post('/api/users/:name/history', (req, res) => {
   const name = req.params.name;
   fs.readFile('db.json', 'utf8', (err, data) => {
@@ -146,6 +152,7 @@ app.post('/api/users/:name/history', (req, res) => {
   });
 });
 
+/*Haetaan tuotteiden id*/
 app.get('/api/items/:id', (req, res) => {
     const id = req.params.id;
 
@@ -165,6 +172,7 @@ app.get('/api/items/:id', (req, res) => {
     });
 });
 
+/*Poistetaan tuote*/
 app.delete('/api/items/:id', (req, res) => {
   const id = req.params.id;
 
@@ -192,6 +200,7 @@ app.delete('/api/items/:id', (req, res) => {
   });
 });
 
+/*Lisätään tuote*/
 app.post('/api/items', (req, res) => {
   fs.readFile('db.json', 'utf8', (err, data) => {
     if (err) {
@@ -214,6 +223,7 @@ app.post('/api/items', (req, res) => {
   });
 });
 
+/*Päivitetään käyttäjän rahat*/
 app.put('/api/users/:userName', (req, res) => {
   const userName = req.params.userName;
   const userMoney = req.body.money;
