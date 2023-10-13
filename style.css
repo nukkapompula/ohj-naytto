@@ -1,7 +1,9 @@
+/*
 *{
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
+*/
 .container{
     max-width: 1080px;
 }
