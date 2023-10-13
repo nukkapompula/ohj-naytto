@@ -31,9 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 items.items.forEach(item => {
                     if (item.user != localStorage.getItem("loggedIn")) {
                         const li = document.createElement("li");
+                        li.className = "my-3";
                         li.textContent = `${item.name} - €${item.price} - ${item.user} `;
     
                         const buyButton = document.createElement("button");
+                        buyButton.className = "bg-dark rounded p-2";
+                        buyButton.style.color = "greenyellow";
+                        buyButton.style.boxShadow = "2px 2px 8px #222222";
                         buyButton.textContent = "Osta";
                         buyButton.addEventListener("click", () => {
                             console.log("rahat:", localStorage.getItem("userMoney"));

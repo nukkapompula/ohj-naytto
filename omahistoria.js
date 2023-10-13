@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     userHistory.innerHTML = '';
                     user.history.forEach(item => {
                         const li = document.createElement("li");
+                        li.className = "text-center pt-3";
                         li.textContent = `${item.name} - €${item.price} - ${item.user} `;
                         userHistory.appendChild(li);
                     });

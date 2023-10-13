@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     .filter(item => item.user === userName)
                     .forEach(item => {
                         const li = document.createElement("li");
-                        li.textContent = `${item.name} - €${item.price} - ${item.user} `;
+                        li.className = "text-center pt-3";
+                        li.textContent = `${item.name} - €${item.price}`;
                         userItems.appendChild(li);
                     });
             })
