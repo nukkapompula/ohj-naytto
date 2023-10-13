@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
     const userName = localStorage.getItem("loggedIn");
-    const storageMoney = localStorage.getItem("userMoney");
-    let moneyLeft = storageMoney;
+    let moneyLeft; 
 
-    /*Näytetään käyttäjän tiedot*/
+    /* Näytetään käyttäjän tiedot ja päivitetään moneyLeft */
     function displayInfo() {
         fetch('http://localhost:3000/api/items')
             .then(response => response.json())
             .then(items => {
                 items.users.forEach(user => {
                     if (user.name == userName) {
+                        moneyLeft = user.money; 
+                        localStorage.setItem("userMoney", moneyLeft);
+                        console.log("MoneyLeft:", moneyLeft); 
                         document.getElementById("userInfo").innerHTML =
-                        `${userName} kirjattu sisään, rahaa ${user.money}€.`;
-                        localStorage.setItem("userMoney", user.money);
+                            `${userName} kirjattu sisään, rahaa ${moneyLeft}€.`;
+                        displayItems();
                     }
                 })
             })
     }
+    
+    displayInfo();
+
+    
 
     console.log(moneyLeft);
     console.log(userName);
@@ -60,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
+
     /*Lisätään tuote historiaan*/
     function addUserHistory(item) {
 
@@ -89,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(error));
     }
+
 
     /*Päivitetään käyttäjän rahat*/
     function updateMoney() {
@@ -132,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(error));
     }
-
+    
     displayItems();
-    displayInfo();
 });
