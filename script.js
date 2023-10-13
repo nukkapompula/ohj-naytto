@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 moneyLeft -= item.price;
                                 localStorage.setItem("userMoney", moneyLeft);
                                 removeItem(item.id);
+                                window.alert("Tuote lisätty omaan historiaan.")
                             } else {
                                 window.alert("Rahamäärä ei riitä.");
                             }
