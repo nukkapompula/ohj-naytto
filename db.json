@@ -1,64 +1,52 @@
 {
   "items": [
     {
-      "name": "7",
-      "price": "80",
-      "user": "test",
+      "name": "Tuoli",
+      "price": "30",
+      "user": "Ilmo",
       "id": 1
     },
     {
-      "name": "9",
-      "price": "90",
-      "user": "test",
+      "name": "Pöytä",
+      "price": "50",
+      "user": "Ilmo",
       "id": 2
     },
     {
-      "name": "6",
-      "price": "90",
-      "user": "test",
+      "name": "Näppäimistö",
+      "price": "10",
+      "user": "Ville",
       "id": 3
-      },
-      {
-        "name": "7",
-        "price": "80",
-        "user": "test",
-        "id": 4
-      },
-    {
-    "name": "9",
-    "price": "90",
-    "user": "test",
-    "id": 5
     },
     {
-      "name": "8",
-      "price": "80",
-      "user": "test",
+      "name": "Näyttö",
+      "price": "40",
+      "user": "Ville",
+      "id": 4
+    },
+    {
+      "name": "Hiiri",
+      "price": "10",
+      "user": "Arto",
+      "id": 5
+    },
+    {
+      "name": "Kuulokkeet",
+      "price": "20",
+      "user": "Arto",
       "id": 6
     },
     {
-      "name": "6",
-      "price": "90",
-      "user": "test",
+      "name": "Usb-tikku",
+      "price": "5",
+      "user": "Arto",
       "id": 7
-      },
-      {
-        "name": "7",
-        "price": "80",
-        "user": "test",
-        "id": 8
-      },
-    {
-    "name": "9",
-    "price": "90",
-    "user": "test",
-    "id": 9
     },
     {
-      "name": "8",
-      "price": "80",
-      "user": "test",
-      "id": 10
+      "name": "Ipad",
+      "price": "100",
+      "user": "Arto",
+      "id": 8
     }
   ],
   "users": [
@@ -71,39 +59,33 @@
       "password": "ilmo",
       "money": 300,
       "id": 2,
-      "history": [
-      ]
+      "history": []
     },
     {
       "name": "Artsi",
       "password": "artsi",
       "money": 300,
       "id": 3,
-      "history": [
-      ]
+      "history": []
     },
     {
       "name": "ville",
       "password": "ville",
       "money": 300,
       "id": 4,
-      "history": [
-      ]
+      "history": []
     },
     {
       "name": "elmo",
       "password": "elmo",
       "money": 300,
-      "history": [
-      ]
+      "history": []
     },
     {
       "name": "test",
       "password": "test",
-      "money": 320,
-      "history": [
-        
-      ]
+      "money": 570,
+      "history": []
     }
   ]
 }
