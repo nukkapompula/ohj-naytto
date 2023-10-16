@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     displayInfo();
 
-    
-
     console.log(moneyLeft);
     console.log(userName);
 
