@@ -47,5 +47,6 @@ function checkInput(event){
                 user: userName,
             })
         })
+        window.alert("Tuote lisätty omiin tuotteisiin.")
     }
 }
