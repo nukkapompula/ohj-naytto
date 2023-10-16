@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (user.name == userName) {
                         moneyLeft = user.money;
                         localStorage.setItem("userMoney", moneyLeft);
-                        console.log("MoneyLeft:", moneyLeft); 
                         document.getElementById("userInfo").innerHTML =
                             `${userName} kirjattu sisään, rahaa ${moneyLeft}€.`;
                         displayItems();
@@ -22,9 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     displayInfo();
-
-    console.log(moneyLeft);
-    console.log(userName);
 
     /*Näytetään tuotteet*/
     function displayItems() {
@@ -44,13 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         buyButton.style.boxShadow = "2px 2px 8px #222222";
                         buyButton.textContent = "Osta";
                         buyButton.addEventListener("click", () => {
-                            console.log("rahat:", localStorage.getItem("userMoney"));
-                            console.log("hinta:", item.price);
                             if (Number(localStorage.getItem("userMoney")) >= item.price) {
                                 localStorage.setItem("moneyToSeller", item.price);
                                 localStorage.setItem("seller", item.user);
                                 moneyLeft -= item.price;
-                                console.log("rahat miinuksen jälkeen:", moneyLeft);
                                 localStorage.setItem("userMoney", moneyLeft);
                                 removeItem(item.id);
                                 window.alert("Tuote lisätty omaan historiaan.")
@@ -104,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const userMoney = moneyLeft;
         const userName = localStorage.getItem("loggedIn");
-        console.log("userMoney:", userMoney);
     
         fetch(`http://localhost:3000/api/users/${userName}`, {
             method: 'PUT',
@@ -117,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) {
                 throw new Error('Failed to update user money');
             }
-            console.log('User money updated successfully');
         })
         .catch(error => console.error(error));
     }
@@ -147,7 +138,6 @@ function removeItem(itemId) {
         if (!response.ok) {
             throw new Error('Failed to update seller money');
         }
-        console.log('Seller money updated successfully');
 
         localStorage.setItem("userMoney", moneyLeft);
 
@@ -162,7 +152,6 @@ function removeItem(itemId) {
             return response.json();
         })
         .then(data => {
-            console.log(`Deleted item with ID ${itemId}`);
             updateMoney();
             displayItems();
             addUserHistory(data);

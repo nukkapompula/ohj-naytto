@@ -227,7 +227,6 @@ app.post('/api/items', (req, res) => {
 app.put('/api/users/:userName', (req, res) => {
   const userName = req.params.userName;
   const userMoney = req.body.money;
-  console.log("userMoney:", userMoney);
   try {
     const data = fs.readFileSync('db.json', 'utf8');
     const db = JSON.parse(data);
