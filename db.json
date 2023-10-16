@@ -2,49 +2,49 @@
   "items": [
     {
       "name": "Tuoli",
-      "price": "30",
+      "price": "100",
       "user": "ilmo",
       "id": 1
     },
     {
       "name": "Pöytä",
-      "price": "50",
+      "price": "500",
       "user": "ilmo",
       "id": 2
     },
     {
       "name": "Näppäimistö",
-      "price": "10",
+      "price": "100",
       "user": "ville",
       "id": 3
     },
     {
       "name": "Näyttö",
-      "price": "40",
+      "price": "400",
       "user": "ville",
       "id": 4
     },
     {
       "name": "Hiiri",
-      "price": "10",
+      "price": "100",
       "user": "Artsi",
       "id": 5
     },
     {
       "name": "Kuulokkeet",
-      "price": "20",
+      "price": "25",
       "user": "Artsi",
       "id": 6
     },
     {
       "name": "Usb-tikku",
-      "price": "5",
+      "price": "50",
       "user": "Artsi",
       "id": 7
     },
     {
       "name": "Ipad",
-      "price": "100",
+      "price": "200",
       "user": "Artsi",
       "id": 8
     }
