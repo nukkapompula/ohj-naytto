@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemName = document.getElementById("item-name");
     const userName = localStorage.getItem("loggedIn");
-    let moneyLeft; 
+    let moneyLeft;
 
     /* Näytetään käyttäjän tiedot ja päivitetään moneyLeft */
     function displayInfo() {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(items => {
                 items.users.forEach(user => {
                     if (user.name == userName) {
-                        moneyLeft = user.money; 
+                        moneyLeft = user.money;
                         localStorage.setItem("userMoney", moneyLeft);
                         console.log("MoneyLeft:", moneyLeft); 
                         document.getElementById("userInfo").innerHTML =
@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log("rahat:", localStorage.getItem("userMoney"));
                             console.log("hinta:", item.price);
                             if (Number(localStorage.getItem("userMoney")) >= item.price) {
+                                localStorage.setItem("moneyToSeller", item.price);
+                                localStorage.setItem("seller", item.user);
                                 moneyLeft -= item.price;
                                 localStorage.setItem("userMoney", moneyLeft);
                                 removeItem(item.id);
@@ -121,9 +123,51 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error(error));
     }
 
+    // haetaan myyjän rahamäärä
+    function getSellerBalance(){
+        const seller = localStorage.getItem("seller");
+        fetch('http://localhost:3000/api/items')
+        .then(response => response.json())
+        .then(items => {
+            items.users.forEach(user => {
+                if (user.name == seller) {
+                    localStorage.setItem("sellerMoney", user.money);
+                }
+            })
+        });
+    }
+
+    /*Päivitetään myyjän rahat*/
+    function updateSeller() {
+
+        // haetaan ensin myyjän rahamäärä
+        getSellerBalance();
+        const seller = localStorage.getItem("seller");
+        const sellerMoney = localStorage.getItem("sellerMoney");
+        const moneyToSeller = localStorage.getItem("moneyToSeller");
+        const sum = Number(sellerMoney) + Number(moneyToSeller);
+        
+        // laitetaan uusi summa myyjän rahamääräksi
+        fetch(`http://localhost:3000/api/users/${seller}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ money: sum })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update seller money');
+            }
+            console.log('Seller money updated successfully');
+        })
+        .catch(error => console.error(error));
+    }
+
     /*Poistetaan tuote*/
     function removeItem(itemId) {
         updateMoney();
+        updateSeller();
         fetch(`http://localhost:3000/api/items/${itemId}`, {
             method: 'DELETE'
         })
@@ -140,6 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(error));
     }
-    
+
     displayItems();
 });
