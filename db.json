@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "name": "3",
-      "price": "30",
-      "user": "test",
-      "id": 7
-    },
-    {
-      "name": "5",
-      "price": "50",
-      "user": "test",
-      "id": 8
-    },
-    {
       "name": "9",
       "price": "90",
       "user": "test",
@@ -33,7 +21,7 @@
     {
       "name": "ilmo",
       "password": "ilmo",
-      "money": 0,
+      "money": 220,
       "id": 2,
       "history": [
         {
@@ -53,6 +41,18 @@
           "price": "20",
           "user": "test",
           "id": 3
+        },
+        {
+          "name": "5",
+          "price": "50",
+          "user": "test",
+          "id": 4
+        },
+        {
+          "name": "3",
+          "price": "30",
+          "user": "test",
+          "id": 5
         }
       ]
     },
@@ -106,7 +106,7 @@
     {
       "name": "test",
       "password": "test",
-      "money": 70,
+      "money": 150,
       "history": [
         {
           "name": "4",

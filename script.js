@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 localStorage.setItem("moneyToSeller", item.price);
                                 localStorage.setItem("seller", item.user);
                                 moneyLeft -= item.price;
+                                console.log("rahat miinuksen jälkeen:", moneyLeft);
                                 localStorage.setItem("userMoney", moneyLeft);
                                 removeItem(item.id);
                                 window.alert("Tuote lisätty omaan historiaan.")
@@ -121,67 +122,59 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error(error));
     }
 
-    // haetaan myyjän rahamäärä
-    function getSellerBalance(){
-        const seller = localStorage.getItem("seller");
-        fetch('http://localhost:3000/api/items')
-        .then(response => response.json())
-        .then(items => {
-            items.users.forEach(user => {
-                if (user.name == seller) {
-                    localStorage.setItem("sellerMoney", user.money);
-                }
-            })
-        });
-    }
+   
+    /* Poistetaan tuote ja lisätään myyjälle rahat*/
+function removeItem(itemId) {
+    
+    const sellerName = localStorage.getItem("seller");
+    const moneyToSeller = localStorage.getItem("moneyToSeller");
 
-    /*Päivitetään myyjän rahat*/
-    function updateSeller() {
-
-        // haetaan ensin myyjän rahamäärä
-        getSellerBalance();
-        const seller = localStorage.getItem("seller");
-        const sellerMoney = localStorage.getItem("sellerMoney");
-        const moneyToSeller = localStorage.getItem("moneyToSeller");
-        const sum = Number(sellerMoney) + Number(moneyToSeller);
-        
-        // laitetaan uusi summa myyjän rahamääräksi
-        fetch(`http://localhost:3000/api/users/${seller}`, {
+    fetch(`http://localhost:3000/api/users/${sellerName}`, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(seller => {
+        seller.money += parseFloat(moneyToSeller);
+        return fetch(`http://localhost:3000/api/users/${sellerName}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ money: sum })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to update seller money');
-            }
-            console.log('Seller money updated successfully');
-        })
-        .catch(error => console.error(error));
-    }
+            body: JSON.stringify({ money: seller.money })
+        });
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to update seller money');
+        }
+        console.log('Seller money updated successfully');
 
-    /*Poistetaan tuote*/
-    function removeItem(itemId) {
-        updateMoney();
-        updateSeller();
+        localStorage.setItem("userMoney", moneyLeft);
+
+      
         fetch(`http://localhost:3000/api/items/${itemId}`, {
             method: 'DELETE'
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to delete item');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(`Deleted item with ID ${itemId}`);
-                displayItems();
-                addUserHistory(data);
-            })
-            .catch(error => console.error(error));
-    }
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete item');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(`Deleted item with ID ${itemId}`);
+            updateMoney();
+            displayItems();
+            addUserHistory(data);
+            
+        })
+        .catch(error => console.error(error));
+
+        
+    })
+    .catch(error => console.error(error));
+}
+
 
     displayItems();
 });
