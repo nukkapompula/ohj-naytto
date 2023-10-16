@@ -1,10 +1,58 @@
 {
   "items": [
     {
+      "name": "7",
+      "price": "80",
+      "user": "test",
+      "id": 1
+    },
+    {
       "name": "9",
       "price": "90",
       "user": "test",
-      "id": 9
+      "id": 2
+    },
+    {
+      "name": "6",
+      "price": "90",
+      "user": "test",
+      "id": 3
+      },
+      {
+        "name": "7",
+        "price": "80",
+        "user": "test",
+        "id": 4
+      },
+    {
+    "name": "9",
+    "price": "90",
+    "user": "test",
+    "id": 5
+    },
+    {
+      "name": "8",
+      "price": "80",
+      "user": "test",
+      "id": 6
+    },
+    {
+      "name": "6",
+      "price": "90",
+      "user": "test",
+      "id": 7
+      },
+      {
+        "name": "7",
+        "price": "80",
+        "user": "test",
+        "id": 8
+      },
+    {
+    "name": "9",
+    "price": "90",
+    "user": "test",
+    "id": 9
     },
     {
       "name": "8",
@@ -21,39 +69,9 @@
     {
       "name": "ilmo",
       "password": "ilmo",
-      "money": 220,
+      "money": 300,
       "id": 2,
       "history": [
-        {
-          "name": "pöytä",
-          "price": "20",
-          "user": "elmo",
-          "id": 1
-        },
-        {
-          "name": "hiiri",
-          "price": "10",
-          "user": "Testi henkilö5",
-          "id": 2
-        },
-        {
-          "name": "2",
-          "price": "20",
-          "user": "test",
-          "id": 3
-        },
-        {
-          "name": "5",
-          "price": "50",
-          "user": "test",
-          "id": 4
-        },
-        {
-          "name": "3",
-          "price": "30",
-          "user": "test",
-          "id": 5
-        }
       ]
     },
     {
@@ -62,32 +80,14 @@
       "money": 300,
       "id": 3,
       "history": [
-        {
-          "name": "tuoli",
-          "price": "20",
-          "user": "elmo",
-          "id": 1
-        },
-        {
-          "name": "Pöytä",
-          "price": "50",
-          "user": "ilmo",
-          "id": 2
-        }
       ]
     },
     {
       "name": "ville",
       "password": "ville",
-      "money": -10,
+      "money": 300,
       "id": 4,
       "history": [
-        {
-          "name": "1",
-          "price": "10",
-          "user": "test",
-          "id": 1
-        }
       ]
     },
     {
@@ -95,51 +95,15 @@
       "password": "elmo",
       "money": 300,
       "history": [
-        {
-          "name": "tuoli",
-          "price": "10",
-          "user": "ilmo",
-          "id": 1
-        }
       ]
     },
     {
       "name": "test",
       "password": "test",
-      "money": 150,
+      "money": 320,
       "history": [
-        {
-          "name": "4",
-          "price": "40",
-          "user": "test",
-          "id": 1
-        },
-        {
-          "name": "hiiri",
-          "price": "20",
-          "user": "ilmo",
-          "id": 2
-        },
-        {
-          "name": "tietokone",
-          "price": "100",
-          "user": "testi henkilö",
-          "id": 3
-        },
-        {
-          "name": "näyttö",
-          "price": "40",
-          "user": "testi henkilö2",
-          "id": 4
-        },
-        {
-          "name": "tuoli",
-          "price": "20",
-          "user": "elmo",
-          "id": 5
-        }
-      ],
-      "id": 6
+        
+      ]
     }
   ]
 }
