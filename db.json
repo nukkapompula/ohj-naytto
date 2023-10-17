@@ -86,6 +86,13 @@
       "password": "test",
       "money": 570,
       "history": []
+    },
+    {
+      "name": "asd",
+      "password": "asd",
+      "money": 300,
+      "history": [],
+      "id": 7
     }
   ]
 }

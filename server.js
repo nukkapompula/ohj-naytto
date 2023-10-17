@@ -107,11 +107,12 @@ app.post('/api/users', (req, res) => {
       res.status(500).send('Server error');
       return;
     }
-    const users = JSON.parse(data).users;
+    const db = JSON.parse(data);
+    const users = db.users;
     const newUser = req.body;
     newUser.id = users.length + 1;
     users.push(newUser);
-    fs.writeFile('db.json', JSON.stringify({ items: [], users }, null, 2), (err) => {
+    fs.writeFile('db.json', JSON.stringify({ items: db.items, users }, null, 2), (err) => {
       if (err) {
         console.error(err);
         res.status(500).send('Server error');
