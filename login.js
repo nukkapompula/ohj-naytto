@@ -4,9 +4,8 @@ var loginPassword = document.getElementById("loginPassword");
 var signupWindow = document.getElementsByTagName("div")[1];
 var signupUsername = document.getElementById("signupUsername");
 var signupPassword = document.getElementById("signupPassword");
-var confirmationWindow = document.getElementsByTagName("div")[2];
 
-/*Näytetään kirjautumisikkuna*/
+/* Sisäänkirjautuminen */
 function loginUser(){
     let matchFound = false;
     if(loginUsername.value == "" || loginPassword.value == ""){
@@ -21,7 +20,7 @@ function loginUser(){
                     return;
                 }
             })
-            if(matchFound == true){
+            if(matchFound){
                 localStorage.setItem("loggedIn", loginUsername.value);
                 loginUsername.value = "";
                 loginPassword.value = "";
@@ -31,11 +30,11 @@ function loginUser(){
                 loginUsername.value = "";
                 loginPassword.value = "";
             }
-        })
+        });
     }
 }
 
-/* Uuden käyttäjän luonti */
+/* Uuden käyttäjän luomisikkuna esiin */
 function createNewAccount(){
     loginWindow.style.display = "none";
     loginUsername.value = "";
@@ -46,13 +45,12 @@ function createNewAccount(){
 /* Palataan kirjautumisikkunaan */
 function returnToLogin(){
     signupWindow.style.display = "none";
-    confirmationWindow.style.display = "none";
     signupUsername.value = "";
     signupPassword.value = "";
     loginWindow.style.display = "block";
 }
 
-/* Vahvistetaan uuden käyttäjän luonti */
+/* Vahvistetaan uuden käyttäjän luominen */
 function confirmNewAccount(){
     let matchFound = false;
     if(signupUsername.value == "" || signupPassword.value == ""){
@@ -67,13 +65,12 @@ function confirmNewAccount(){
                     return;
                 }
             })
-            if(matchFound == true){
+            if(matchFound){
                 window.alert("Käyttäjänimi on varattu.");
                 signupUsername.value = "";
                 signupPassword.value = "";
             } else {
-                confirmationWindow.style.display = "block";
-                signupWindow.style.display = "none";
+                window.alert(`Käyttäjä ${signupUsername.value} luotu!`);
                 fetch('http://localhost:3000/api/users', {
                     method: 'POST',
                     headers: {
